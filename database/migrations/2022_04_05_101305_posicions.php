@@ -24,11 +24,7 @@ class Posicions extends Migration
             
             $table->string('posicion');
             $table->string('otros')->nullable();
-            $table->string('imagen');
-            // $table->string('token', 64)->unique();
-            // $table->text('abilities')->nullable();
-            // $table->string('email')->index();
-            // $table->timestamp('failed_at')->useCurrent();
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }

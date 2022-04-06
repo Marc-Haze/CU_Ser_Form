@@ -26,7 +26,7 @@ class Articulos extends Migration
             $table->integer('color');
             $table->integer('talla');
             $table->integer('cantidad');
-            $table->integer('colorEstamapdo');
+            $table->integer('colorEstampado');
             $table->timestamps();
         });
     }
