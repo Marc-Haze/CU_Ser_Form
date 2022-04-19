@@ -22,11 +22,12 @@ class Articulos extends Migration
                 ->on('prendas')
                 ->onDelete('cascade');
             
-            $table->string('referencia');
-            $table->integer('color');
-            $table->integer('talla');
-            $table->integer('cantidad');
-            $table->integer('colorEstampado');
+            $table->string('articulo');
+            $table->string('color')->nullable();
+            $table->string('talla')->nullable();
+            $table->string('descripcion');
+            $table->string('codigoInterno');
+            $table->string('ean')->nullable();
             $table->timestamps();
         });
     }

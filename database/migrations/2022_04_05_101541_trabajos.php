@@ -16,6 +16,10 @@ class Trabajos extends Migration
         Schema::create('trabajos', function (Blueprint $table) {
             $table->id();
             $table->string('tipoTrabajo');
+            $table->integer('referencia');
+            $table->string('descripcion');
+            $table->float('pvp');
+            $table->string('igic');
             $table->timestamps();
         });
     }

@@ -11,6 +11,6 @@ class Trabajo extends Model
     protected $table = "trabajos";
 
     protected $fillable = [
-        'tipoTrabajo'
+        "tipoTrabajo","referencia","descripcion","pvp","igic"
     ];
 }

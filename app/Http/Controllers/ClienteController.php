@@ -19,10 +19,17 @@ class ClienteController extends Controller{
 
         $dataCliente= new Cliente;
 
-        $dataCliente->nombre=$request->nombre;
+        $dataCliente->numero=$request->numero;
+        $dataCliente->cif_nif=$request->cif_nif;
+        $dataCliente->razonSocial=$request->razonSocial;
+        $dataCliente->nombreComercial=$request->nombreComercial;
+        $dataCliente->telefono=$request->telefono;
         $dataCliente->email=$request->email;
-        $dataCliente->contacto=$request->contacto;
-
+        $dataCliente->domicilio=$request->domicilio;
+        $dataCliente->codigoPostal=$request->codigoPostal;
+        $dataCliente->municipio=$request->municipio;
+        $dataCliente->provincia=$request->provincia;
+        $dataCliente->observaciones=$request->observaciones;
         $dataCliente->save();
         return response()->json('Cliente añadido con éxito');
     }
@@ -49,14 +56,38 @@ class ClienteController extends Controller{
         $cliente= Cliente::find($id);
         
         //Actualiza solo los datos que han cambiado
-        if($request-> input('nombre')){
-            $cliente->nombre=$request->input('nombre');
+        if($request-> input('numero')){
+            $cliente->numero=$request->input('numero');
+        }
+        if($request-> input('cif_nif')){
+            $cliente->cif_nif=$request->input('cif_nif');
+        }
+        if($request-> input('razonSocial')){
+            $cliente->razonSocial=$request->input('razonSocial');
+        }
+        if($request-> input('nombreComercial')){
+            $cliente->nombreComercial=$request->input('nombreComercial');
+        }
+        if($request-> input('telefono')){
+            $cliente->telefono=$request->input('telefono');
         }
         if($request-> input('email')){
             $cliente->email=$request->input('email');
         }
-        if($request-> input('contacto')){
-            $cliente->contacto=$request->input('contacto');
+        if($request-> input('domicilio')){
+            $cliente->domicilio=$request->input('domicilio');
+        }
+        if($request-> input('codigoPostal')){
+            $cliente->codigoPostal=$request->input('codigoPostal');
+        }
+        if($request-> input('municipio')){
+            $cliente->municipio=$request->input('municipio');
+        }
+        if($request-> input('provincia')){
+            $cliente->provincia=$request->input('provincia');
+        }
+        if($request-> input('observaciones')){
+            $cliente->observaciones=$request->input('observaciones');
         }
         $cliente->save();
         return response()->json("Datos del Cliente actualizados");

@@ -11,7 +11,7 @@ class Articulo extends Model
     protected $table = "articulos";
 
     protected $fillable = [
-        'idPrenda', 'referencia','color','talla','cantidad','colorEstampado'
+        'idPrenda', 'articulo','color','talla','descripcion','codigoInterno','ean'
     ];
 
     // Relación Articulo - Prenda

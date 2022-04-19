@@ -15,9 +15,17 @@ class Clientes extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('numero');
+            $table->string('cif_nif');
+            $table->string('razonSocial')->nullable();
+            $table->string('nombreComercial');
+            $table->string('telefono');
             $table->string('email');
-            $table->integer('contacto');
+            $table->string('domicilio')->nullable();
+            $table->string('codigoPostal')->nullable();
+            $table->string('municipio')->nullable();
+            $table->string('provincia')->nullable();
+            $table->string('observaciones')->nullable();
             $table->timestamps();
         });
     }

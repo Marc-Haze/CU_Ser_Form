@@ -18,11 +18,12 @@ class ArticuloController extends Controller{
     public function addArticulo(Request $request){
         $dataArticulo= new Articulo;
         $dataArticulo->idPrenda=$request->idPrenda;
-        $dataArticulo->referencia=$request->referencia;
+        $dataArticulo->articulo=$request->articulo;
         $dataArticulo->talla=$request->talla;
         $dataArticulo->color=$request->color;
-        $dataArticulo->cantidad=$request->cantidad;
-        $dataArticulo->colorEstampado=$request->colorEstampado;
+        $dataArticulo->descripcion=$request->descripcion;
+        $dataArticulo->codigoInterno=$request->codigoInterno;
+        $dataArticulo->ean=$request->ean;
         $dataArticulo->save();
         return response()->json('Articulo añadido con éxito');
     }
@@ -52,8 +53,8 @@ class ArticuloController extends Controller{
         if($request-> input('idPrenda')){
             $articulo->idPrenda=$request->input('idPrenda');
         }
-        if($request-> input('referencia')){
-            $articulo->referencia=$request->input('referencia');
+        if($request-> input('articulo')){
+            $articulo->articulo=$request->input('articulo');
         }
         if($request-> input('talla')){
             $articulo->talla=$request->input('talla');
@@ -61,11 +62,14 @@ class ArticuloController extends Controller{
         if($request-> input('color')){
             $articulo->color=$request->input('color');
         }
-        if($request-> input('cantidad')){
-            $articulo->cantidad=$request->input('cantidad');
+        if($request-> input('descripcion')){
+            $articulo->descripcion=$request->input('descripcion');
         }
-        if($request-> input('colorEstampado')){
-            $articulo->colorEstampado=$request->input('colorEstampado');
+        if($request-> input('codigoInterno')){
+            $articulo->codigoInterno=$request->input('codigoInterno');
+        }
+        if($request-> input('ean')){
+            $articulo->ean=$request->input('ean');
         }
         $articulo->save();
         return response()->json("Datos del Articulo actualizados");

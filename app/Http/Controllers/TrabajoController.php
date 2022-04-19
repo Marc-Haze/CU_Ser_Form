@@ -18,6 +18,10 @@ class TrabajoController extends Controller{
     public function addTrabajo(Request $request){
         $dataTrabajo= new Trabajo;
         $dataTrabajo->tipoTrabajo=$request->tipoTrabajo;
+        $dataTrabajo->referencia=$request->referencia;
+        $dataTrabajo->descripcion=$request->descripcion;
+        $dataTrabajo->pvp=$request->pvp;
+        $dataTrabajo->igic=$request->igic;
         $dataTrabajo->save();
         return response()->json('Trabajo añadido con éxito');
     }
@@ -46,6 +50,18 @@ class TrabajoController extends Controller{
         //Actualiza solo los datos que han cambiado
         if($request-> input('tipoTrabajo')){
             $trabajo->tipoTrabajo=$request->input('tipoTrabajo');
+        }
+        if($request-> input('referencia')){
+            $trabajo->referencia=$request->input('referencia');
+        }
+        if($request-> input('descripcion')){
+            $trabajo->descripcion=$request->input('descripcion');
+        }
+        if($request-> input('pvp')){
+            $trabajo->pvp=$request->input('pvp');
+        }
+        if($request-> input('igic')){
+            $trabajo->igic=$request->input('igic');
         }
         $trabajo->save();
         return response()->json("Datos del T.Trabajo actualizados");
