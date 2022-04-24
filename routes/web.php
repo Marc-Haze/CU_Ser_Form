@@ -24,6 +24,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/form', function () {
+    return view('form.form');
+});
+
 // Rutas para la tabla Clientes
 Route::get('/clientes',[ClienteController::class, 'findAll']);
 Route::get('/clientes/{id}',[ClienteController::class, 'findById']);

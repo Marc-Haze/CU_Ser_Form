@@ -22,7 +22,7 @@ class PedidoController extends Controller{
         $dataPedido->idArticulo=$request->idArticulo;
         $dataPedido->numeroPedido=$request->numeroPedido;
         $dataPedido->save();
-        return response()->json('Pedido añadido con éxito');
+        return redirect()->route('welcome')->with('success','Pedido Añadido con Éxito');
     }
 
     //Busca a una posicion por ID
