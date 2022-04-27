@@ -8,6 +8,7 @@ use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PrendaController;
 use App\Http\Controllers\TrabajoController;
+use App\Http\Controllers\PruebaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,17 @@ Route::get('/', function () {
 Route::get('/form', function () {
     return view('form.form');
 });
+
+Route::get('/pruebita', function () {
+    return view('pruebita.form');
+});
+
+// Rutas para la tabla Prueba
+Route::get('/pruebas',[PruebaController::class, 'findAll']);
+Route::get('/pruebas/{id}',[PruebaController::class, 'findById']);
+Route::post('/pruebas/{id}',[PruebaController::class, 'updateById']);
+Route::post('/pruebas',[PruebaController::class, 'addPrueba']);
+Route::delete('/pruebas/{id}',[PruebaController::class, 'deleteById']);
 
 // Rutas para la tabla Clientes
 Route::get('/clientes',[ClienteController::class, 'findAll']);
