@@ -17,7 +17,7 @@ class EstampadoController extends Controller{
     // Guarda el Estampado en la base de datos con una petición
     public function addEstampado(Request $request){
         $dataEstampado= new Estampado;
-        $dataEstampado->idTrabajo=$request->idTrabajo;
+        $dataEstampado->idPedido=$request->idPedido;
         $dataEstampado->referencia=$request->referencia;
         $dataEstampado->unidades=$request->unidades;
         $dataEstampado->precioUnd=$request->precioUnd;
@@ -49,8 +49,8 @@ class EstampadoController extends Controller{
         $estampado= Estampado::find($id);
         
         //Actualiza solo los datos que han cambiado
-        if($request-> input('idTrabajo')){
-            $estampado->idTrabajo=$request->input('idTrabajo');
+        if($request-> input('idPedido')){
+            $estampado->idPedido=$request->input('idPedido');
         }
         if($request-> input('referencia')){
             $estampado->referencia=$request->input('referencia');

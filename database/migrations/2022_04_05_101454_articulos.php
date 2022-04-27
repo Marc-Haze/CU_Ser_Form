@@ -14,14 +14,14 @@ class Articulos extends Migration
     public function up()
     {
         Schema::create('articulos', function (Blueprint $table) {
-            $table->id();
-            // Relación Articulo - Prenda
-            $table->unsignedBigInteger('idPrenda');
-            $table->foreign('idPrenda')
+            $table->id();        
+            // Relación Articulo - Pedido
+            $table->unsignedBigInteger('idPedido');
+            $table->foreign('idPedido')
                 ->references('id')
-                ->on('prendas')
+                ->on('pedidos')
                 ->onDelete('cascade');
-            
+                  
             $table->string('articulo');
             $table->string('color')->nullable();
             $table->string('talla')->nullable();

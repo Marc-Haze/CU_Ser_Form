@@ -10,9 +10,9 @@ class Pruebas extends Migration
     {
         Schema::create('pruebas', function (Blueprint $table) {
             $table->id();
-            $table->string('dato1');
-            $table->string('dato2');
-            $table->string('dato3');
+            $table->string('dato1')->nullable();;
+            $table->string('dato2')->nullable();;
+            $table->string('dato3')->nullable();;
             $table->timestamps();
         });
     }

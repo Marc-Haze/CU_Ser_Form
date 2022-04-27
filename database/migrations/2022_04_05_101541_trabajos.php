@@ -15,10 +15,17 @@ class Trabajos extends Migration
     {
         Schema::create('trabajos', function (Blueprint $table) {
             $table->id();
+            // Relación T.Trabajo - Pedido
+            $table->unsignedBigInteger('idPedido');
+            $table->foreign('idPedido')
+                ->references('id')
+                ->on('pedidos')
+                ->onDelete('cascade');
+
             $table->string('tipoTrabajo');
-            $table->integer('referencia');
+            $table->string('referencia');
             $table->string('descripcion');
-            $table->float('pvp');
+            $table->string('pvp');
             $table->string('igic');
             $table->timestamps();
         });

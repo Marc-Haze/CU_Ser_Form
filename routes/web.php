@@ -26,7 +26,7 @@ Route::get('/', function () {
 });
 
 Route::get('/form', function () {
-    return view('form.form');
+    return view('form.firstForm');
 });
 
 Route::get('/pruebita', function () {
@@ -68,13 +68,6 @@ Route::post('/articulos/{id}',[ArticuloController::class, 'updateById']);
 Route::post('/articulos',[ArticuloController::class, 'addArticulo']);
 Route::delete('/articulos/{id}',[ArticuloController::class, 'deleteById']);
 
-// Rutas para la tabla T.Trabajo
-Route::get('/trabajos',[TrabajoController::class, 'findAll']);
-Route::get('/trabajos/{id}',[TrabajoController::class, 'findById']);
-Route::post('/trabajos/{id}',[TrabajoController::class, 'updateById']);
-Route::post('/trabajos',[TrabajoController::class, 'addTrabajo']);
-Route::delete('/trabajos/{id}',[TrabajoController::class, 'deleteById']);
-
 // Rutas para la tabla Estampado
 Route::get('/estampados',[EstampadoController::class, 'findAll']);
 Route::get('/estampados/{id}',[EstampadoController::class, 'findById']);
@@ -88,3 +81,10 @@ Route::get('/pedidos/{id}',[PedidoController::class, 'findById']);
 Route::post('/pedidos/{id}',[PedidoController::class, 'updateById']);
 Route::post('/pedidos',[PedidoController::class, 'addPedido']);
 Route::delete('/pedidos/{id}',[PedidoController::class, 'deleteById']);
+
+// Rutas para la tabla Trabajo
+Route::get('/trabajos',[TrabajoController::class, 'findAll']);
+Route::get('/trabajos/{id}',[TrabajoController::class, 'findById']);
+Route::post('/trabajos/{id}',[TrabajoController::class, 'updateById']);
+Route::post('/trabajos',[TrabajoController::class, 'addTrabajo']);
+Route::delete('/trabajos/{id}',[TrabajoController::class, 'deleteById']);

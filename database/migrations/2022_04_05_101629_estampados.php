@@ -15,19 +15,18 @@ class Estampados extends Migration
     {
         Schema::create('estampados', function (Blueprint $table) {
             $table->id();
-            // Relación Estampado - T.Trabajo
-            $table->unsignedBigInteger('idTrabajo');
-            $table->foreign('idTrabajo')
+            // Relación Estampado - Pedido
+            $table->unsignedBigInteger('idPedido');
+            $table->foreign('idPedido')
                 ->references('id')
-                ->on('trabajos')
+                ->on('pedidos')
                 ->onDelete('cascade');
-
+                
             $table->string('referencia');
-            $table->integer('unidades');
-            $table->float('precioUnd');
-            $table->float('importeTotal');
-            $table->string('observaciones');
-
+            $table->string('unidades');
+            $table->string('precioUnd');
+            $table->string('importeTotal');
+            $table->string('observaciones')->nullable();;
             $table->timestamps();
         });
     }

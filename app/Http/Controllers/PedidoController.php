@@ -18,11 +18,11 @@ class PedidoController extends Controller{
     public function addPedido(Request $request){
         $dataPedido= new Pedido;
         $dataPedido->idCliente=$request->idCliente;
-        $dataPedido->idEstampado=$request->idEstampado;
-        $dataPedido->idArticulo=$request->idArticulo;
         $dataPedido->numeroPedido=$request->numeroPedido;
+        $dataPedido->fechaPedido=$request->fechaPedido;
+        $dataPedido->fechaTerminacion=$request->fechaTerminacion;
         $dataPedido->save();
-        return redirect()->route('welcome')->with('success','Pedido Añadido con Éxito');
+        return response()->json('Pedido añadido con éxito');
     }
 
     //Busca a una posicion por ID
@@ -50,14 +50,14 @@ class PedidoController extends Controller{
         if($request-> input('idCliente')){
             $pedido->idCliente=$request->input('idCliente');
         }
-        if($request-> input('idEstampado')){
-            $pedido->idEstampado=$request->input('idEstampado');
-        }
-        if($request-> input('idArticulo')){
-            $pedido->idArticulo=$request->input('idArticulo');
-        }
         if($request-> input('numeroPedido')){
             $pedido->numeroPedido=$request->input('numeroPedido');
+        }
+        if($request-> input('fechaPedido')){
+            $pedido->fechaPedido=$request->input('fechaPedido');
+        }
+        if($request-> input('fechaTerminacion')){
+            $pedido->fechaTerminacion=$request->input('fechaTerminacion');
         }
         $pedido->save();
         return response()->json("Datos del Pedido actualizados");

@@ -21,22 +21,9 @@ class Pedidos extends Migration
                 ->references('id')
                 ->on('clientes')
                 ->onDelete('cascade');
-
-            // Relación Pedido - Articulo
-            $table->unsignedBigInteger('idArticulo');
-            $table->foreign('idArticulo')
-                ->references('id')
-                ->on('articulos')
-                ->onDelete('cascade');
-
-            // Relación Pedido - Estampado
-            $table->unsignedBigInteger('idEstampado');
-            $table->foreign('idEstampado')
-                ->references('id')
-                ->on('estampados')
-                ->onDelete('cascade');
-
-            $table->integer('numeroPedido');
+            $table->string('numeroPedido');
+            $table->string('fechaPedido');
+            $table->string('fechaTerminacion')->nullable();
             $table->timestamps();
         });
     }

@@ -16,9 +16,7 @@ class ClienteController extends Controller{
 
     // Guarda el Cliente en la base de datos con una petición
     public function addCliente(Request $request){
-
         $dataCliente= new Cliente;
-
         $dataCliente->numero=$request->numero;
         $dataCliente->cif_nif=$request->cif_nif;
         $dataCliente->razonSocial=$request->razonSocial;

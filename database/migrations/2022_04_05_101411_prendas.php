@@ -15,6 +15,13 @@ class Prendas extends Migration
     {
         Schema::create('prendas', function (Blueprint $table) {
             $table->id();
+            // Relación Prenda - Pedido
+            $table->unsignedBigInteger('idPedido');
+            $table->foreign('idPedido')
+                ->references('id')
+                ->on('pedidos')
+                ->onDelete('cascade');
+                
             // Relación Prenda - Posicion
             $table->unsignedBigInteger('idPosicion');
             $table->foreign('idPosicion')

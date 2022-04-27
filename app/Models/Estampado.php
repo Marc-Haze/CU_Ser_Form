@@ -11,12 +11,12 @@ class Estampado extends Model
     protected $table = "estampados";
 
     protected $fillable = [
-        'idTrabajo', 'referencia','unidades','precioUnd','importeTotal','observaciones'
+        'idPedido','referencia','unidades','precioUnd','importeTotal','observaciones'
     ];
 
-    // Relación Estampado - T.Trabajo
-    public function trabajo()
+    // Relación Estampado - Pedido
+    public function pedido()
     {
-        return $this->belongsTo(Trabajo::class);
+        return $this->belongsTo(Pedido::class);
     }
 }

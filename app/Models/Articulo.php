@@ -11,12 +11,12 @@ class Articulo extends Model
     protected $table = "articulos";
 
     protected $fillable = [
-        'idPrenda', 'articulo','color','talla','descripcion','codigoInterno','ean'
+        'idPedido','articulo','color','talla','descripcion','codigoInterno','ean'
     ];
 
-    // Relación Articulo - Prenda
-    public function prenda()
+    // Relación Articulo - Pedido
+    public function pedido()
     {
-        return $this->belongsTo(Prenda::class);
+        return $this->belongsTo(Pedido::class);
     }
 }

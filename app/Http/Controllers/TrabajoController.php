@@ -1,13 +1,14 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Trabajo;
 
-class TrabajoController extends Controller{
-    
-    // Permite el acceso al modelo
-    public function findAll(){
+class TrabajoController extends Controller
+{
+       // Permite el acceso al modelo
+       public function findAll(){
         // dataTrabajo contiene todos los datos del modelo T.Trabajo
         $dataTrabajo= Trabajo::all();
         // Devuelve un json con la información de T.Trabajo
@@ -17,6 +18,7 @@ class TrabajoController extends Controller{
     // Guarda el T.Trabajo en la base de datos con una petición
     public function addTrabajo(Request $request){
         $dataTrabajo= new Trabajo;
+        $dataTrabajo->idPedido=$request->idPedido;
         $dataTrabajo->tipoTrabajo=$request->tipoTrabajo;
         $dataTrabajo->referencia=$request->referencia;
         $dataTrabajo->descripcion=$request->descripcion;
@@ -48,6 +50,9 @@ class TrabajoController extends Controller{
         $trabajo= Trabajo::find($id);
         
         //Actualiza solo los datos que han cambiado
+        if($request-> input('idPedido')){
+            $trabajo->idPedido=$request->input('idPedido');
+        }
         if($request-> input('tipoTrabajo')){
             $trabajo->tipoTrabajo=$request->input('tipoTrabajo');
         }

@@ -17,6 +17,7 @@ class PrendaController extends Controller{
     // Guarda la Prenda en la base de datos con una petición
     public function addPrenda(Request $request){
         $dataPrenda= new Prenda;
+        $dataPrenda->idPedido=$request->idPedido;
         $dataPrenda->idPosicion=$request->idPosicion;
         $dataPrenda->tipoPrenda=$request->tipoPrenda;
         $dataPrenda->save();
@@ -45,6 +46,9 @@ class PrendaController extends Controller{
         $prenda= Prenda::find($id);
         
         //Actualiza solo los datos que han cambiado
+        if($request-> input('idPedido')){
+            $prenda->idPedido=$request->input('idPedido');
+        }
         if($request-> input('idPosicion')){
             $prenda->idPosicion=$request->input('idPosicion');
         }

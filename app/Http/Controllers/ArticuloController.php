@@ -17,7 +17,7 @@ class ArticuloController extends Controller{
     // Guarda el Articulo en la base de datos con una petición
     public function addArticulo(Request $request){
         $dataArticulo= new Articulo;
-        $dataArticulo->idPrenda=$request->idPrenda;
+        $dataArticulo->idPedido=$request->idPedido;
         $dataArticulo->articulo=$request->articulo;
         $dataArticulo->talla=$request->talla;
         $dataArticulo->color=$request->color;
@@ -50,8 +50,8 @@ class ArticuloController extends Controller{
         $articulo= Articulo::find($id);
         
         //Actualiza solo los datos que han cambiado
-        if($request-> input('idPrenda')){
-            $articulo->idPrenda=$request->input('idPrenda');
+        if($request-> input('idPedido')){
+            $articulo->idPedido=$request->input('idPedido');
         }
         if($request-> input('articulo')){
             $articulo->articulo=$request->input('articulo');
