@@ -1,28 +1,3 @@
-{{-- @extends('dataPedido.layout')
-
-@section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Generar Pedido</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('welcome.blade') }}"> Back</a>
-        </div>
-    </div>
-</div>
-   
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> Algo pasó y fue chungo.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif --}}
-
 <!DOCTYPE html>
 <html>
     <body>
@@ -134,4 +109,3 @@
         </form>
     </body>
 </html>
-{{-- @endsection   --}}

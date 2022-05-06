@@ -8,6 +8,7 @@ use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PrendaController;
 use App\Http\Controllers\TrabajoController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\PruebaController;
 
 /*
@@ -25,9 +26,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/form', function () {
+Route::get('/first', function () {
     return view('form.firstForm');
-});
+})->name('first');
+
+Route::get('/second', function () {
+    return view('form.secondForm');
+})->name('second');
 
 Route::get('/pruebita', function () {
     return view('pruebita.form');
@@ -88,3 +93,6 @@ Route::get('/trabajos/{id}',[TrabajoController::class, 'findById']);
 Route::post('/trabajos/{id}',[TrabajoController::class, 'updateById']);
 Route::post('/trabajos',[TrabajoController::class, 'addTrabajo']);
 Route::delete('/trabajos/{id}',[TrabajoController::class, 'deleteById']);
+
+//Ruta de envío del Formulario
+Route::post('/formulario',[FormController::class, 'insertData']);

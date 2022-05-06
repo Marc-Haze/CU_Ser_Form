@@ -26,6 +26,12 @@ class VerifyCsrfToken extends Middleware
         '/estampados/*',
         '/pedidos',
         '/pedidos/*',
+        '/formulario',
+        '/formulario/*',
+        '/first',
+        '/first/*',
+        '/second',
+        '/second/*',
         '/pruebas',
         '/pruebas/*',
     ];

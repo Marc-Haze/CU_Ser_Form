@@ -11,12 +11,6 @@ class Trabajo extends Model
     protected $table = "trabajos";
 
     protected $fillable = [
-        "idPedido","tipoTrabajo","referencia"
+        "tipoTrabajo","referencia","descripcion","pvp","igic"
     ];
-
-    // Relación Prenda - Pedido
-    public function pedido()
-    {
-        return $this->belongsTo(Pedido::class);
-    }
 }

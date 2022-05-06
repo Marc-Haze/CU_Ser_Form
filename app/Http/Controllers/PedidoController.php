@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pedido;
+use routes\web;
 
 class PedidoController extends Controller{
     
@@ -17,12 +18,14 @@ class PedidoController extends Controller{
     // Guarda el Pedido en la base de datos con una petición
     public function addPedido(Request $request){
         $dataPedido= new Pedido;
+        $dataPedido->id=$request->numeroPedido;
         $dataPedido->idCliente=$request->idCliente;
-        $dataPedido->numeroPedido=$request->numeroPedido;
         $dataPedido->fechaPedido=$request->fechaPedido;
         $dataPedido->fechaTerminacion=$request->fechaTerminacion;
+        $dataPedido->creacion=$request->creacion;
         $dataPedido->save();
-        return response()->json('Pedido añadido con éxito');
+        $numeroPedido=$dataPedido->id=$request->numeroPedido;
+        return view('form.secondForm', compact('numeroPedido'));
     }
 
     //Busca a una posicion por ID
@@ -50,8 +53,8 @@ class PedidoController extends Controller{
         if($request-> input('idCliente')){
             $pedido->idCliente=$request->input('idCliente');
         }
-        if($request-> input('numeroPedido')){
-            $pedido->numeroPedido=$request->input('numeroPedido');
+        if($request-> input('id')){
+            $pedido->id=$request->input('id');
         }
         if($request-> input('fechaPedido')){
             $pedido->fechaPedido=$request->input('fechaPedido');

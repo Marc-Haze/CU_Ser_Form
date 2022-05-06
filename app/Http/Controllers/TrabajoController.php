@@ -21,9 +21,6 @@ class TrabajoController extends Controller
         $dataTrabajo->idPedido=$request->idPedido;
         $dataTrabajo->tipoTrabajo=$request->tipoTrabajo;
         $dataTrabajo->referencia=$request->referencia;
-        $dataTrabajo->descripcion=$request->descripcion;
-        $dataTrabajo->pvp=$request->pvp;
-        $dataTrabajo->igic=$request->igic;
         $dataTrabajo->save();
         return response()->json('Trabajo añadido con éxito');
     }
@@ -58,15 +55,6 @@ class TrabajoController extends Controller
         }
         if($request-> input('referencia')){
             $trabajo->referencia=$request->input('referencia');
-        }
-        if($request-> input('descripcion')){
-            $trabajo->descripcion=$request->input('descripcion');
-        }
-        if($request-> input('pvp')){
-            $trabajo->pvp=$request->input('pvp');
-        }
-        if($request-> input('igic')){
-            $trabajo->igic=$request->input('igic');
         }
         $trabajo->save();
         return response()->json("Datos del T.Trabajo actualizados");
