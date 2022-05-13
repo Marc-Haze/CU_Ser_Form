@@ -12,9 +12,9 @@ class PedidoController extends Controller{
         // dataPedido contiene todos los datos del modelo Pedido
         $dataPedido= Pedido::all();
         // Devuelve un json con la información de Pedido
-        return response()->json($dataPedido);
+        return view('get.pedidosGet', compact('dataPedido'));
     }
-
+    
     // Guarda el Pedido en la base de datos con una petición
     public function addPedido(Request $request){
         $dataPedido= new Pedido;
@@ -25,7 +25,8 @@ class PedidoController extends Controller{
         $dataPedido->creacion=$request->creacion;
         $dataPedido->save();
         $numeroPedido=$dataPedido->id=$request->numeroPedido;
-        return view('form.secondForm', compact('numeroPedido'));
+        $idCliente=$dataPedido->id=$request->idCliente;
+        return view('form.secondForm', compact('numeroPedido','idCliente'));
     }
 
     //Busca a una posicion por ID

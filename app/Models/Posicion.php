@@ -11,12 +11,12 @@ class Posicion extends Model
     protected $table = "posicions";
 
     protected $fillable = [
-        'idCliente', 'posicion','otros','imagen'
+        'idImagen', 'posicion','otros','imagen'
     ];
 
-    // Relación Posicion - Cliente
-    public function cliente()
+    // Relación Posicion - Imagen
+    public function imagen()
     {
-        return $this->belongsTo(Cliente::class);
+        return $this->belongsTo(Imagen::class);
     }
 }

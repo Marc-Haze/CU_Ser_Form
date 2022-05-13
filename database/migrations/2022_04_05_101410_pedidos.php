@@ -14,15 +14,14 @@ class Pedidos extends Migration
     public function up()
     {
         Schema::create('pedidos', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
-            $table->primary('id');
+            $table->id(); //Debe no ser autoincremental
             // Relación Pedido - Cliente
-            $table->unsignedBigInteger('idCliente');
+            $table->string('idCliente');
             $table->foreign('idCliente')
-                ->references('id')
+                ->references('cif_nif')
                 ->on('clientes')
                 ->onDelete('cascade');
-            $table->string('fechaPedido');
+            $table->string('fechaPedido')->nullable();
             $table->string('fechaTerminacion')->nullable();
             $table->string('creacion');
             $table->timestamps();

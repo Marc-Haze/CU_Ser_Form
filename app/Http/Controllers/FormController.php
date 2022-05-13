@@ -11,46 +11,57 @@ use App\Models\Prenda;
 use App\Models\Trabajo;
 
 class FormController extends Controller{
-    
     public function insertData(Request $request){
-        $dataPedido= new Pedido;
-        $dataPedido->id=$request->numeroPedido;
-        $dataPedido->idCliente=$request->idCliente;
-        $dataPedido->fechaPedido=$request->fechaPedido;
-        $dataPedido->fechaTerminacion=$request->fechaTerminacion;
-        $dataPedido->creacion=$request->creacion;
-        $dataPedido->save();
+        if(!empty($request->input('tipoTrabajo'))){
+            
+            $dataTrabajo= new Trabajo;
+            $dataTrabajo->idPedido=$request->numeroPedido;
+            $dataTrabajo->tipoTrabajo=$request->tipoTrabajo;
+            $dataTrabajo->referencia=$request->referencia;
+            $dataTrabajo->save();
 
-        $dataTrabajo= new Trabajo;
-        $dataTrabajo->idPedido=$request->numeroPedido;
-        $dataTrabajo->tipoTrabajo=$request->tipoTrabajo;
-        $dataTrabajo->referencia=$request->referencia;
-        $dataTrabajo->save();
+            $dataPosicion= new Posicion;
+            $dataPosicion->idImagen=$request->idImagen;
+            $dataPosicion->posicion=$request->posicion;
+            $dataPosicion->otros=$request->otros;
+            $dataPosicion->save();
 
-        $dataPosicion= new Posicion;
+            $dataPrenda= new Prenda;
+            $dataPrenda->idPedido=$request->numeroPedido;
+            $dataPrenda->idPosicion=$dataPosicion->id;
+            $dataPrenda->tipoPrenda=$request->tipoPrenda;
+            $dataPrenda->save();
 
-        //Si se añade una imagen la procesa y la sube a un directorio local.
-        if($request->hasFile('imagen')){
+            $numeroPedido=$dataTrabajo->idPedido=$request->numeroPedido;
 
-            $OriginalName=$request->file('imagen')->getClientOriginalName();
-            $newName=Carbon::now()->timestamp."_".$OriginalName;
-            $Destiny='./upload/';
-            $request->file('imagen')->move($Destiny, $newName);
+            return view('form.secondForm', compact('numeroPedido'));
 
-            $dataPosicion->imagen=ltrim($Destiny,'.').$newName;
+        }else{
+            $numeroPedido=$request->numeroPedido;
+            return view('form.thirdForm', compact('numeroPedido'));
         }
+    }
 
-        $dataPosicion->idCliente=$request->idCliente;
-        $dataPosicion->posicion=$request->posicion;
-        $dataPosicion->otros=$request->otros;
-        $dataPosicion->save();
-        $request->file('imagen');
+    public function insertData2(Request $request){
+        $dataArticulo= new Articulo;
+        $dataArticulo->idPedido=$request->numeroPedido;
+        $dataArticulo->articulo=$request->articulo;
+        $dataArticulo->talla=$request->talla;
+        $dataArticulo->color=$request->color;
+        $dataArticulo->descripcion=$request->descripcion;
+        $dataArticulo->codigoInterno=$request->codigoInterno;
+        $dataArticulo->ean=$request->ean;
+        $dataArticulo->save();
 
-        $dataPrenda= new Prenda;
-        $dataTrabajo->idPedido=$request->numeroPedido;
-        $dataPrenda->idPosicion=$request->idPosicion;
-        $dataPrenda->tipoPrenda=$request->tipoPrenda;
-        $dataPrenda->save();
+        $dataEstampado= new Estampado;
+        $dataEstampado->idPedido=$request->numeroPedido;
+        $dataEstampado->referencia=$request->referencia;
+        $dataEstampado->unidades=$request->unidades;
+        $dataEstampado->precioUnd=$request->precioUnd;
+        $dataEstampado->importeTotal=$request->importeTotal;
+        $dataEstampado->observaciones=$request->observaciones;
+        $dataEstampado->save();
+
         return response()->json('Datos añadidos con éxito');
     }
 }

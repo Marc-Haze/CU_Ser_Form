@@ -8,6 +8,7 @@ use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PrendaController;
 use App\Http\Controllers\TrabajoController;
+use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\PruebaController;
 
@@ -26,6 +27,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/client', function () {
+    return view('form.clientForm');
+})->name('client');
+
 Route::get('/first', function () {
     return view('form.firstForm');
 })->name('first');
@@ -34,16 +39,21 @@ Route::get('/second', function () {
     return view('form.secondForm');
 })->name('second');
 
-Route::get('/pruebita', function () {
-    return view('pruebita.form');
-});
+Route::get('/third', function () {
+    return view('form.thirdForm');
+})->name('third');
 
-// Rutas para la tabla Prueba
-Route::get('/pruebas',[PruebaController::class, 'findAll']);
-Route::get('/pruebas/{id}',[PruebaController::class, 'findById']);
-Route::post('/pruebas/{id}',[PruebaController::class, 'updateById']);
-Route::post('/pruebas',[PruebaController::class, 'addPrueba']);
-Route::delete('/pruebas/{id}',[PruebaController::class, 'deleteById']);
+Route::get('/clients', function () {
+    return view('get.clientsGet');
+})->name('clients');
+
+Route::get('/getclient', function () {
+    return view('get.clientGet');
+})->name('getclient');
+
+Route::get('/getpedido', function () {
+    return view('get.pedidoGet');
+})->name('getpedido');
 
 // Rutas para la tabla Clientes
 Route::get('/clientes',[ClienteController::class, 'findAll']);
@@ -51,6 +61,13 @@ Route::get('/clientes/{id}',[ClienteController::class, 'findById']);
 Route::post('/clientes/{id}',[ClienteController::class, 'updateById']);
 Route::post('/clientes',[ClienteController::class, 'addCliente']);
 Route::delete('/clientes/{id}',[ClienteController::class, 'deleteById']);
+
+// Rutas para la tabla Imagenes
+Route::get('/imagens',[ImagenController::class, 'findAll']);
+Route::get('/imagens/{id}',[ImagenController::class, 'findById']);
+Route::post('/imagens/{id}',[ImagenController::class, 'updateById']);
+Route::post('/imagens',[ImagenController::class, 'addImagen']);
+Route::delete('/imagens/{id}',[ImagenController::class, 'deleteById']);
 
 // Rutas para la tabla Poscicion
 Route::get('/posicions',[PosicionController::class, 'findAll']);
@@ -96,3 +113,4 @@ Route::delete('/trabajos/{id}',[TrabajoController::class, 'deleteById']);
 
 //Ruta de envío del Formulario
 Route::post('/formulario',[FormController::class, 'insertData']);
+Route::post('/formulario2',[FormController::class, 'insertData2']);

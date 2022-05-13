@@ -1,25 +1,11 @@
-<?php
-// $fechaPedido = isset($_GET['fechaPedido']) ? $_GET['fechaPedido']: "";
-// $fechaTerminacion = isset($_GET['fechaTerminacion']) ? $_GET['fechaTerminacion']: "";
-// $creacion = isset($_GET['creacion']) ? $_GET['creacion']: "";
-// $idCliente = isset($_GET['idCliente']) ? $_GET['idCliente']: "";
-
-echo "numeroPedido:".$numeroPedido;
-// echo "fechaPedido:".$fechaPedido;
-// echo "fechaTerminacion:".$fechaTerminacion;
-// echo "creacion:".$creacion;
-// echo "idCliente:".$idCliente;
-
-//Realizar un select aquí para obtener el numeroPedido? *REVISAR*
-?>
 <!DOCTYPE html>
 <html>
     <body>
         <h1>SEGUNDO FORMULARIO - SERIGRAFÍA</h1>
         {{ csrf_field() }}
-        <form method="POST" action="/formulario">
+        <form method="POST" action="formulario">
             <h3>Tipos de Trabajo:</h3>
-            Número de Pedido<input type="text" name="idPedido" value=<?php echo $numeroPedido ?>>
+            <input type="hidden" name="numeroPedido" value=<?php echo $numeroPedido ?>>
             <br>
             Boceto<input type="radio" name="tipoTrabajo" value="boceto">
             Bordado<input type="radio" name="tipoTrabajo" value="bordado" >
@@ -33,36 +19,38 @@ echo "numeroPedido:".$numeroPedido;
             <br>
             <br>
             <h3>Tipos de Prenda:</h3>
-            Camiseta<input type="radio" name="prendas" value="camiseta">
-            Polo<input type="radio" name="prendas" value="polo">
-            Sudadera<input type="radio" name="prendas" value="sudadera">
-            Polar<input type="radio" name="prendas" value="polar">
-            Camisa<input type="radio" name="prendas" value="camisa">
-            Pantalón<input type="radio" name="prendas" value="pantalon">
-            Chaleco<input type="radio" name="prendas" value="chaleco">
             <br>
-            Blusón<input type="radio" name="prendas" value="bluson">
-            Chaqueta Cocina<input type="radio" name="prendas" value="chaqueta_cocina">
-            Casulla<input type="radio" name="prendas" value="casulla">
-            Delantal<input type="radio" name="prendas" value="delantal">
-            Pijama<input type="radio" name="prendas" value="pijama">
-            Bata<input type="radio" name="prendas" value="bata">
-            Gorra<input type="radio" name="prendas" value="gorra">
+            Camiseta<input type="radio" name="tipoPrenda" value="camiseta">
+            Polo<input type="radio" name="tipoPrenda" value="polo">
+            Sudadera<input type="radio" name="tipoPrenda" value="sudadera">
+            Polar<input type="radio" name="tipoPrenda" value="polar">
+            Camisa<input type="radio" name="tipoPrenda" value="camisa">
+            Pantalón<input type="radio" name="tipoPrenda" value="pantalon">
+            Chaleco<input type="radio" name="tipoPrenda" value="chaleco">
             <br>
+            Blusón<input type="radio" name="tipoPrenda" value="bluson">
+            Chaqueta Cocina<input type="radio" name="tipoPrenda" value="chaqueta_cocina">
+            Casulla<input type="radio" name="tipoPrenda" value="casulla">
+            Delantal<input type="radio" name="tipoPrenda" value="delantal">
+            Pijama<input type="radio" name="tipoPrenda" value="pijama">
+            Bata<input type="radio" name="tipoPrenda" value="bata">
+            Gorra<input type="radio" name="tipoPrenda" value="gorra">
+            <br>
+            <br>
+            <h3>ID Imagen:</h3>
+            <input type="text" name="idImagen" maxlength="50">
             <br>
             <h3>Posición del Logo:</h3>
-            Pecho Izquierdo<input type="radio" name="logo" value="pecho_izquierdo">
-            Pecho Derecho<input type="radio" name="logo" value="pecho_derecho">
+            Pecho Izquierdo<input type="radio" name="posicion" value="pecho_izquierdo">
+            Pecho Derecho<input type="radio" name="posicion" value="pecho_derecho">
             <br>
-            Fuera Bolsillo<input type="radio" name="logo" value="fuera_bolsillo">
-            Dentro Bolsillo<input type="radio" name="logo" value="dentro_bolsillo">
+            Fuera Bolsillo<input type="radio" name="posicion" value="fuera_bolsillo">
+            Dentro Bolsillo<input type="radio" name="posicion" value="dentro_bolsillo">
             <br>
-            Manga Izquierda<input type="radio" name="logo" value="manga_izquierda">
-            Manga Derecha<input type="radio" name="logo" value="manga_derecha">
+            Manga Izquierda<input type="radio" name="posicion" value="manga_izquierda">
+            Manga Derecha<input type="radio" name="posicion" value="manga_derecha">
             <br>
-            Espalda<input type="radio" name="logo" value="espalda">
-            <br>
-            Imagen<input type="file" name="imagen">
+            Espalda<input type="radio" name="posicion" value="espalda">
             <br>
             <br>
             Otros:
@@ -70,6 +58,11 @@ echo "numeroPedido:".$numeroPedido;
             <br>
             <br>
             <input type="submit" name="submit" value="Enviar">
+        </form>
+        <br>
+        <form method="POST" action="formulario">
+        <input type="hidden" name="numeroPedido" value=<?php echo $numeroPedido ?>>
+        <input type="submit" name="submit" value="Siguiente">
         </form>
     </body>
 </html>

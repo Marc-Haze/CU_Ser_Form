@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Trabajos extends Migration
+class Imagens extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class Trabajos extends Migration
      */
     public function up()
     {
-        Schema::create('trabajos', function (Blueprint $table) {
+        Schema::create('imagens', function (Blueprint $table) {
             $table->id();
-            $table->string('tipoTrabajo');
-            $table->string('referencia');
-            $table->string('descripcion');
-            $table->string('pvp');
-            $table->string('igic');
+            // Relación Imagen - Cliente
+            $table->string('idCliente');
+            $table->foreign('idCliente')
+                ->references('cif_nif')
+                ->on('clientes')
+                ->onDelete('cascade');
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class Trabajos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trabajos');
+        Schema::dropIfExists('imagens');
     }
 }

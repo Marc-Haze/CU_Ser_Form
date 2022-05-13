@@ -14,9 +14,8 @@ class Clientes extends Migration
     public function up()
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->id();
+            $table->string('cif_nif')->primary();
             $table->string('numero');
-            $table->string('cif_nif');
             $table->string('razonSocial')->nullable();
             $table->string('nombreComercial');
             $table->string('telefono');
@@ -37,6 +36,6 @@ class Clientes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cliente');
+        Schema::dropIfExists('clientes');
     }
 }

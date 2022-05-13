@@ -15,16 +15,15 @@ class Posicions extends Migration
     {
         Schema::create('posicions', function (Blueprint $table) {
             $table->id();
-            // Relación Posicion - Cliente
-            $table->unsignedBigInteger('idCliente');
-            $table->foreign('idCliente')
+            // Relación Posicion - Imagen
+            $table->unsignedBigInteger('idImagen');
+            $table->foreign('idImagen')
                 ->references('id')
-                ->on('clientes')
+                ->on('imagens')
                 ->onDelete('cascade');
             
             $table->string('posicion');
             $table->string('otros')->nullable();
-            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }
