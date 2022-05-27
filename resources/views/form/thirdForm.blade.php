@@ -3,7 +3,7 @@
     <body>
         <h1>TERCER FORMULARIO - TIENDA</h1>
         {{ csrf_field() }}
-        <form method="POST"  action="formulario2">
+        <form method="POST"  action="controlForm3">
             <input type="hidden" name="numeroPedido" value=<?php echo $numeroPedido ?>>
             <h2>Datos de Artículo</h2>
             Número del Artículo:
@@ -42,7 +42,12 @@
             <input type="text" name="observaciones" maxlength="50">
             <br>
             <br>
-            <input type="submit" name="submit" value="Enviar">
+            <input type="submit" name="submit" value="Añadir Referencias">
+        </form>
+        <br>
+        <form method="POST" action="controlForm3">
+            <input type="hidden" name="numeroPedido" value=<?php echo $numeroPedido ?>>
+            <input type="submit" name="submit" value="Finalizar Pedido">
         </form>
     </body>
 </html>

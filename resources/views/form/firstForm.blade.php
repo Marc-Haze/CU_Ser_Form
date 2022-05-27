@@ -4,10 +4,8 @@
     <body>
         <h1>PRIMER FORMULARIO - TIENDA</h1>
         {{ csrf_field() }}
-        {{-- <iframe name="frame" style="display:none;"></iframe> --}}
         <form method="POST"  action="pedidos">
             <h2>Datos de Pedido</h2>
-            
             Número de Tienda:
             <input type="text" name="numeroTienda" maxlength="50">
             <br>
@@ -21,7 +19,7 @@
             <br>
             <br>
             <h3>Datos de Cliente:</h3>
-            NIF Cliente:
+            Número Cliente:
             <input type="text" name="idCliente" maxlength="50">
             <br>
             <br>

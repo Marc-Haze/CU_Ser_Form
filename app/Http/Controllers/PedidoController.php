@@ -3,6 +3,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pedido;
+use App\Models\Articulo;
+use App\Models\Estampado;
+use App\Models\Posicion;
+use App\Models\Prenda;
+use App\Models\Trabajo;
 use routes\web;
 
 class PedidoController extends Controller{
@@ -12,7 +17,7 @@ class PedidoController extends Controller{
         // dataPedido contiene todos los datos del modelo Pedido
         $dataPedido= Pedido::all();
         // Devuelve un json con la información de Pedido
-        return view('get.pedidosGet', compact('dataPedido'));
+        return view('get.ordersList', compact('dataPedido'));
     }
     
     // Guarda el Pedido en la base de datos con una petición
@@ -29,11 +34,16 @@ class PedidoController extends Controller{
         return view('form.secondForm', compact('numeroPedido','idCliente'));
     }
 
-    //Busca a una posicion por ID
+    //Busca un pedido y sus datos por ID
     public function findById($id){
         $pedido= new Pedido;
         $dataPedido=$pedido->find($id);
-        return response()->json($dataPedido);
+
+        $dataArticulo= Articulo::all()->where('idPedido', $id);
+        $dataPrenda= Prenda::all()->where('idPedido', $id);
+        $dataTrabajo= Trabajo::all()->where('idPedido', $id);
+        $dataEstampado= Estampado::all()->where('idPedido', $id);
+        return view('get.orderIdSearch', compact('dataPedido','dataArticulo','dataTrabajo','dataEstampado','dataPrenda'));
     }
 
     //Borra una posicion usando la ID

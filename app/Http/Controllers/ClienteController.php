@@ -11,14 +11,14 @@ class ClienteController extends Controller{
         // dataCliente contiene todos los datos del modelo Cliente
         $dataCliente= Cliente::all();
         // Devuelve un json con la información de Cliente
-        return view('get.clientsGet', compact('dataCliente'));
+        return view('get.clientsList', compact('dataCliente'));
     }
 
     // Guarda el Cliente en la base de datos con una petición
     public function addCliente(Request $request){
         $dataCliente= new Cliente;
+        $dataCliente->id=$request->numero;
         $dataCliente->cif_nif=$request->cif_nif;
-        $dataCliente->numero=$request->numero;
         $dataCliente->razonSocial=$request->razonSocial;
         $dataCliente->nombreComercial=$request->nombreComercial;
         $dataCliente->telefono=$request->telefono;
@@ -30,13 +30,14 @@ class ClienteController extends Controller{
         $dataCliente->observaciones=$request->observaciones;
         $dataCliente->save();
         return response()->json('Cliente añadido con éxito');
+        return view('principal.index');
     }
 
-    //Busca a un cliente por ID
+    //Busca a un cliente por el DNI
     public function findById($id){
         $cliente= new Cliente;
         $dataCliente=$cliente->find($id);
-        return response()->json($dataCliente);
+        return view('get.clientIdSearch', compact('dataCliente'));
     }
 
     //Borra un cliente usando la ID
@@ -54,11 +55,11 @@ class ClienteController extends Controller{
         $cliente= Cliente::find($id);
         
         //Actualiza solo los datos que han cambiado
-        if($request-> input('numero')){
-            $cliente->numero=$request->input('numero');
-        }
         if($request-> input('cif_nif')){
             $cliente->cif_nif=$request->input('cif_nif');
+        }
+        if($request-> input('id')){
+            $cliente->cif_idnif=$request->input('id');
         }
         if($request-> input('razonSocial')){
             $cliente->razonSocial=$request->input('razonSocial');

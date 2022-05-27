@@ -11,14 +11,8 @@ class Prenda extends Model
     protected $table = "prendas";
 
     protected $fillable = [
-        'idPedido','idPosicion','tipoPrenda'
+        'idPedido','tipoPrenda'
     ];
-
-    // Relación Prenda - Posicion
-    public function posicion()
-    {
-        return $this->belongsTo(Posicion::class);
-    }
     
     // Relación Prenda - Pedido
     public function pedido()

@@ -18,7 +18,7 @@ class Pedidos extends Migration
             // Relación Pedido - Cliente
             $table->string('idCliente');
             $table->foreign('idCliente')
-                ->references('cif_nif')
+                ->references('id')
                 ->on('clientes')
                 ->onDelete('cascade');
             $table->string('fechaPedido')->nullable();

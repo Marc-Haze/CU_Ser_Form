@@ -21,6 +21,13 @@ class Posicions extends Migration
                 ->references('id')
                 ->on('imagens')
                 ->onDelete('cascade');
+
+            // Relación Posicion - Prenda
+            $table->unsignedBigInteger('idPrenda');
+            $table->foreign('idPrenda')
+                ->references('id')
+                ->on('prendas')
+                ->onDelete('cascade');
             
             $table->string('posicion');
             $table->string('otros')->nullable();

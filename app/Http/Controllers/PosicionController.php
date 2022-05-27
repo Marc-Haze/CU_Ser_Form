@@ -19,6 +19,7 @@ class PosicionController extends Controller{
     public function addPosicion(Request $request){
         $dataPosicion= new Posicion;
         $dataPosicion->idImagen=$request->idImagen;
+        $dataPosicion->idPrenda=$request->idPrenda;
         $dataPosicion->posicion=$request->posicion;
         $dataPosicion->otros=$request->otros;
         $dataPosicion->save();
@@ -48,6 +49,9 @@ class PosicionController extends Controller{
         //Actualiza solo los datos que han cambiado
         if($request-> input('idImagen')){
             $posicion->idImagen=$request->input('idImagen');
+        }
+        if($request-> input('idPrenda')){
+            $posicion->idPrenda=$request->input('idPrenda');
         }
         if($request-> input('posicion')){
             $posicion->posicion=$request->input('posicion');

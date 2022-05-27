@@ -29,11 +29,10 @@ class ImagenController extends Controller
 
             $dataImagen->imagen=ltrim($Destiny,'.').$newName;
         }
-
         $dataImagen->idCliente=$request->idCliente;
         $dataImagen->save();
         $request->file('imagen');
-        return response()->json('Imagen añadida con éxito');
+        return view('principal.index');
     }
 
     //Busca a una Imagen por ID

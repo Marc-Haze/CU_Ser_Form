@@ -21,13 +21,6 @@ class Prendas extends Migration
                 ->references('id')
                 ->on('pedidos')
                 ->onDelete('cascade');
-                
-            // Relación Prenda - Posicion
-            $table->unsignedBigInteger('idPosicion');
-            $table->foreign('idPosicion')
-                ->references('id')
-                ->on('posicions')
-                ->onDelete('cascade');
             
             $table->string('tipoPrenda');
             $table->timestamps();

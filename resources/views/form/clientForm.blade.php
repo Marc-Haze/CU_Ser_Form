@@ -3,7 +3,6 @@
     <body>
         <h1>FORMULARIO DE CLIENTES</h1>
         {{ csrf_field() }}
-        <iframe name="frame" style="display:none;"></iframe>
         <form method="POST"  action="clientes">
             <h2>Datos de Cliente</h2>
             Número:

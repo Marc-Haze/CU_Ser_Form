@@ -3,7 +3,7 @@
     <body>
         <h1>SEGUNDO FORMULARIO - SERIGRAFÍA</h1>
         {{ csrf_field() }}
-        <form method="POST" action="formulario">
+        <form method="POST" action="controlForm2">
             <h3>Tipos de Trabajo:</h3>
             <input type="hidden" name="numeroPedido" value=<?php echo $numeroPedido ?>>
             <br>
@@ -57,12 +57,12 @@
             <input type="text" name="logo">
             <br>
             <br>
-            <input type="submit" name="submit" value="Enviar">
+            <input type="submit" name="submit" value="Añadir Datos">
         </form>
         <br>
-        <form method="POST" action="formulario">
-        <input type="hidden" name="numeroPedido" value=<?php echo $numeroPedido ?>>
-        <input type="submit" name="submit" value="Siguiente">
+        <form method="POST" action="controlForm2">
+            <input type="hidden" name="numeroPedido" value=<?php echo $numeroPedido ?>>
+            <input type="submit" name="submit" value="Siguiente">
         </form>
     </body>
 </html>

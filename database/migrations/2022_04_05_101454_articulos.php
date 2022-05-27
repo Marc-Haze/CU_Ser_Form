@@ -25,7 +25,7 @@ class Articulos extends Migration
             $table->string('articulo');
             $table->string('color')->nullable();
             $table->string('talla')->nullable();
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();;
             $table->string('codigoInterno');
             $table->string('ean')->nullable();
             $table->timestamps();

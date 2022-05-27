@@ -11,6 +11,6 @@ class Cliente extends Model
     protected $table = "clientes";
 
     protected $fillable = [
-        'cif_nif','numero','razonSocial','nombreComercial','telefono','email','domicilio','codigoPostal','municipio','provincia','observaciones'
+        'id'.'cif_nif','razonSocial','nombreComercial','telefono','email','domicilio','codigoPostal','municipio','provincia','observaciones'
     ];
 }

@@ -18,7 +18,6 @@ class PrendaController extends Controller{
     public function addPrenda(Request $request){
         $dataPrenda= new Prenda;
         $dataPrenda->idPedido=$request->idPedido;
-        $dataPrenda->idPosicion=$request->idPosicion;
         $dataPrenda->tipoPrenda=$request->tipoPrenda;
         $dataPrenda->save();
         return response()->json('Prenda añadida con éxito');
@@ -48,9 +47,6 @@ class PrendaController extends Controller{
         //Actualiza solo los datos que han cambiado
         if($request-> input('idPedido')){
             $prenda->idPedido=$request->input('idPedido');
-        }
-        if($request-> input('idPosicion')){
-            $prenda->idPosicion=$request->input('idPosicion');
         }
         if($request-> input('tipoPrenda')){
             $prenda->tipoPrenda=$request->input('tipoPrenda');

@@ -27,40 +27,66 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/client', function () {
+// RUTA DE PÁGINA ÍNDICE
+Route::get('/index', function () {
+    return view('principal.index');
+})->name('index');
+
+// Ruta del Formulario para crear clientes
+Route::get('/addClient', function () {
     return view('form.clientForm');
-})->name('client');
+})->name('addClient');
 
-Route::get('/first', function () {
+// RUTAS DE LOS FORMULARIOS DE TIENDA-SERIGRAFÍA
+// 1º: Crear Pedido
+Route::get('/firstForm', function () {
     return view('form.firstForm');
-})->name('first');
-
-Route::get('/second', function () {
+})->name('firstForm');
+// 2º: Añadir Prendas
+Route::get('/secondForm', function () {
     return view('form.secondForm');
-})->name('second');
-
-Route::get('/third', function () {
+})->name('secondForm');
+// 3º: Añadir Referencias de Artículo y Estampado
+Route::get('/thirdForm', function () {
     return view('form.thirdForm');
-})->name('third');
+})->name('thirdForm');
 
-Route::get('/clients', function () {
-    return view('get.clientsGet');
-})->name('clients');
 
-Route::get('/getclient', function () {
-    return view('get.clientGet');
-})->name('getclient');
+//Obtener Lista de Clientes
+Route::get('/clientsList', function () {
+    return view('get.clientsList');
+})->name('clientsList');
 
-Route::get('/getpedido', function () {
-    return view('get.pedidoGet');
-})->name('getpedido');
+//Obtener un Cliente por su ID
+Route::get('/clientIdSearch', function () {
+    return view('get.clientIdSearch');
+})->name('clientIdSearch');
+
+
+//Obtener Lista de Pedidos
+Route::get('/ordersList', function () {
+    return view('get.ordersList');
+})->name('ordersList');
+
+//Obtener un Pedido por su ID
+Route::get('/orderIdSearch', function () {
+    return view('get.orderIdSearch');
+})->name('orderIdSearch');
+
 
 // Rutas para la tabla Clientes
 Route::get('/clientes',[ClienteController::class, 'findAll']);
-Route::get('/clientes/{id}',[ClienteController::class, 'findById']);
+Route::get('/clientes/{id}',[ClienteController::class, 'findById'])->name('dni.cliente');
 Route::post('/clientes/{id}',[ClienteController::class, 'updateById']);
 Route::post('/clientes',[ClienteController::class, 'addCliente']);
 Route::delete('/clientes/{id}',[ClienteController::class, 'deleteById']);
+
+// Rutas para la tabla Pedido
+Route::get('/pedidos',[PedidoController::class, 'findAll']);
+Route::get('/pedidos/{id}',[PedidoController::class, 'findById'])->name('id.pedido');
+Route::post('/pedidos/{id}',[PedidoController::class, 'updateById']);
+Route::post('/pedidos',[PedidoController::class, 'addPedido']);
+Route::delete('/pedidos/{id}',[PedidoController::class, 'deleteById']);
 
 // Rutas para la tabla Imagenes
 Route::get('/imagens',[ImagenController::class, 'findAll']);
@@ -97,13 +123,6 @@ Route::post('/estampados/{id}',[EstampadoController::class, 'updateById']);
 Route::post('/estampados',[EstampadoController::class, 'addEstampado']);
 Route::delete('/estampados/{id}',[EstampadoController::class, 'deleteById']);
 
-// Rutas para la tabla Pedido
-Route::get('/pedidos',[PedidoController::class, 'findAll']);
-Route::get('/pedidos/{id}',[PedidoController::class, 'findById']);
-Route::post('/pedidos/{id}',[PedidoController::class, 'updateById']);
-Route::post('/pedidos',[PedidoController::class, 'addPedido']);
-Route::delete('/pedidos/{id}',[PedidoController::class, 'deleteById']);
-
 // Rutas para la tabla Trabajo
 Route::get('/trabajos',[TrabajoController::class, 'findAll']);
 Route::get('/trabajos/{id}',[TrabajoController::class, 'findById']);
@@ -112,5 +131,5 @@ Route::post('/trabajos',[TrabajoController::class, 'addTrabajo']);
 Route::delete('/trabajos/{id}',[TrabajoController::class, 'deleteById']);
 
 //Ruta de envío del Formulario
-Route::post('/formulario',[FormController::class, 'insertData']);
-Route::post('/formulario2',[FormController::class, 'insertData2']);
+Route::post('/controlForm2',[FormController::class, 'insertDataForm2']);
+Route::post('/controlForm3',[FormController::class, 'insertDataForm3']);
