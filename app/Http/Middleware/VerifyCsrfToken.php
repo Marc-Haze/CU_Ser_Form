@@ -38,5 +38,7 @@ class VerifyCsrfToken extends Middleware
         '/second/*',
         '/third',
         '/third/*',
+        '/modPedido',
+        '/modPedido/*',
     ];
 }

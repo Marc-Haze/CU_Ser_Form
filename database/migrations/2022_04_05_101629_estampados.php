@@ -26,7 +26,7 @@ class Estampados extends Migration
             $table->string('unidades');
             $table->string('precioUnd');
             $table->string('importeTotal');
-            $table->string('observaciones')->nullable();;
+            $table->string('observaciones')->nullable();
             $table->timestamps();
         });
     }

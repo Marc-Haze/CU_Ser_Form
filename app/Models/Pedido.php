@@ -11,7 +11,7 @@ class Pedido extends Model
     protected $table = "pedidos";
 
     protected $fillable = [
-        'id','idCliente','fechaPedido','fechaTerminacion','creacion'
+        'id','idCliente','numeroTienda','fechaPedido','fechaTerminacion','creacion'
     ];
 
     // Relación Pedido - Cliente

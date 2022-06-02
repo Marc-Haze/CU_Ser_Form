@@ -21,7 +21,6 @@ class Prendas extends Migration
                 ->references('id')
                 ->on('pedidos')
                 ->onDelete('cascade');
-            
             $table->string('tipoPrenda');
             $table->timestamps();
         });

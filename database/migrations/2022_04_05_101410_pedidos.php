@@ -21,6 +21,7 @@ class Pedidos extends Migration
                 ->references('id')
                 ->on('clientes')
                 ->onDelete('cascade');
+            $table->string('numeroTienda');
             $table->string('fechaPedido')->nullable();
             $table->string('fechaTerminacion')->nullable();
             $table->string('creacion');

@@ -29,7 +29,6 @@ class ClienteController extends Controller{
         $dataCliente->provincia=$request->provincia;
         $dataCliente->observaciones=$request->observaciones;
         $dataCliente->save();
-        return response()->json('Cliente añadido con éxito');
         return view('principal.index');
     }
 

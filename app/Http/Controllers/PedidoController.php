@@ -20,10 +20,12 @@ class PedidoController extends Controller{
         return view('get.ordersList', compact('dataPedido'));
     }
     
-    // Guarda el Pedido en la base de datos con una petición
+    // Guarda el Pedido en la base de datos con una petición 
+    // y redirecciona algunos datos al Segundo Formulario
     public function addPedido(Request $request){
         $dataPedido= new Pedido;
         $dataPedido->id=$request->numeroPedido;
+        $dataPedido->numeroTienda=$request->numeroTienda;
         $dataPedido->idCliente=$request->idCliente;
         $dataPedido->fechaPedido=$request->fechaPedido;
         $dataPedido->fechaTerminacion=$request->fechaTerminacion;

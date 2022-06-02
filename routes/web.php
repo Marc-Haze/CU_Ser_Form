@@ -89,10 +89,10 @@ Route::post('/pedidos',[PedidoController::class, 'addPedido']);
 Route::delete('/pedidos/{id}',[PedidoController::class, 'deleteById']);
 
 // Rutas para la tabla Imagenes
+Route::post('/imagens',[ImagenController::class, 'addImagen']);
 Route::get('/imagens',[ImagenController::class, 'findAll']);
 Route::get('/imagens/{id}',[ImagenController::class, 'findById']);
 Route::post('/imagens/{id}',[ImagenController::class, 'updateById']);
-Route::post('/imagens',[ImagenController::class, 'addImagen']);
 Route::delete('/imagens/{id}',[ImagenController::class, 'deleteById']);
 
 // Rutas para la tabla Poscicion
@@ -133,3 +133,5 @@ Route::delete('/trabajos/{id}',[TrabajoController::class, 'deleteById']);
 //Ruta de envío del Formulario
 Route::post('/controlForm2',[FormController::class, 'insertDataForm2']);
 Route::post('/controlForm3',[FormController::class, 'insertDataForm3']);
+Route::get('/orderModForm/{id}',[FormController::class, 'modById'])->name('mod.pedido');
+Route::post('/modPedido/{id}',[FormController::class, 'modOrderData']);
