@@ -102,8 +102,8 @@ class FormController extends Controller{
         foreach ($dataPrenda as $prenda){
             if($request-> input('tipoPrenda')){
                 $prenda->tipoPrenda=$request->input('tipoPrenda');
+                $prenda->save();
             }
-            $prenda->save();
         }
 
         foreach ($dataTrabajo as $trabajo){
@@ -113,8 +113,8 @@ class FormController extends Controller{
             if($request-> input('referencia')){
                 $trabajo->referencia=$request->input('referencia');
             }
-            $trabajo->save();
         }
+        $trabajo->save();
 
         foreach ($dataArticulo as $articulo){
             if($request-> input('articulo')){
@@ -135,7 +135,6 @@ class FormController extends Controller{
             if($request-> input('ean')){
                 $articulo->ean=$request->input('ean');
             }
-            $articulo->save();
         }
 
         foreach ($dataEstampado as $estampado){

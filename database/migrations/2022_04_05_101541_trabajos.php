@@ -16,7 +16,7 @@ class Trabajos extends Migration
         Schema::create('trabajos', function (Blueprint $table) {
             $table->id();
             // Relación T.Trabajo - Pedido
-            $table->unsignedBigInteger('idPedido');
+            $table->string('idPedido');
             $table->foreign('idPedido')
                 ->references('id')
                 ->on('pedidos')

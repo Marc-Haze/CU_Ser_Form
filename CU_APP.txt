@@ -1,0 +1,71 @@
+1 - Descargar el proyecto de git: git clone [dir]
+
+2 - Instalar npm
+    apt install npm
+
+3- Instalar dependencias con npm
+    npm install
+
+4 - instalar el composer
+    curl -sS https://getcomposer.org/installer | php
+
+5. - Instalar dependencias de composer
+        php composer.phar install
+
+6.- COmprobar que arranca el servidor
+        php artisan serve
+
+7 .- GEnerar llave de seguridad para laravel
+        php artisan key:generate
+
+
+    || Generar Vhost para Apache (Deploy de la App en Laravel)
+
+8 - CAmbiar permisos de laravel en la carpeta del proyecto
+        sudo chown -R www-data:www-data /var/www/html/CU_Ser_Form/
+        sudo chmod -R 775 /var/www/html/CU_Ser_Form/
+
+9 - Crear el archivo de configuración del Vhost en /etc/apache2/sites-available/CU_Ser_Form.conf
+                                                                                              
+    <VirtualHost *:80>
+            ServerAdmin admin@example.com
+            ServerName cuserigrafia.com
+            ServerAlias www.cuserigrafia.com
+            DocumentRoot /var/www/html/CU_Ser_Form/public
+
+            <Directory /var/www/html/CU_Ser_Form/public>
+                    Options Indexes FollowSymlinks MUltiViews
+                    AllowOverride All
+                    Order allow,deny
+                    allow from all
+                    Require all granted
+            </Directory>
+
+            LogLevel debug
+            ErrorLog ${APACHE_LOG_DIR}/error.log
+            CustomLog ${APACHE_LOG_DIR}/access.log combines
+    </VirtualHost>
+
+10 - Crear el dominio en /etc/hosts
+        127.0.0.1   cuserigrafia.com
+
+11 - Crear el enlace
+    ln -s /var/www/html/CU_Ser_Form/public/ cuserigrafi
+
+12 - Cambiar la configuración predeterminada
+    sudo a2dissite 000-default.conf
+    sudo a2ensite CU_Ser_Form.conf
+    sudo a2enmod rewrite
+
+13 - Reiniciar el servicio Apache
+    systemctl restart apache2
+    systemctl status apache2
+
+REFERENCIAS:
+    https://phpraxis.wordpress.com/2016/08/02/steps-for-configuring-laravel-on-apache-http-server/
+
+
+
+
+
+NOTA: Arreglado problema con el ID de pedido (Era unsignedBigInteger en sus relaciones cuando era string)

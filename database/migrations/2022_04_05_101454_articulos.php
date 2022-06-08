@@ -16,7 +16,7 @@ class Articulos extends Migration
         Schema::create('articulos', function (Blueprint $table) {
             $table->id();        
             // Relación Articulo - Pedido
-            $table->unsignedBigInteger('idPedido');
+            $table->string('idPedido');
             $table->foreign('idPedido')
                 ->references('id')
                 ->on('pedidos')

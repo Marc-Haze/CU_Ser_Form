@@ -16,7 +16,7 @@ class Estampados extends Migration
         Schema::create('estampados', function (Blueprint $table) {
             $table->id();
             // Relación Estampado - Pedido
-            $table->unsignedBigInteger('idPedido');
+            $table->string('idPedido');
             $table->foreign('idPedido')
                 ->references('id')
                 ->on('pedidos')

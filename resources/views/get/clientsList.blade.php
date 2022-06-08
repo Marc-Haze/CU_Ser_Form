@@ -20,6 +20,7 @@
                                         <td align="center"><a href="{{ route('dni.cliente', ['id'=>$cliente['id']]) }}"> <?php echo $cliente['id'] ?> </a></td>
                                         <td align="center"><?php echo $cliente['cif_nif'] ?></td>
                                         <td align="center"><?php echo $cliente['nombreComercial'] ?></td>
+                                        
                                     </tr>
                                 <?php
                                 }
